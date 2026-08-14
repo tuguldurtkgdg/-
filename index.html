@@ -24,7 +24,6 @@
       min-height: 100vh;
     }
 
-    /* 1-р сонголт: Харанхуй / Гоёмсог карт (Dark Glass) */
     .card {
       background: rgba(15, 23, 42, 0.88);
       backdrop-filter: blur(12px);
@@ -77,10 +76,6 @@
       transform: translateY(-2px);
     }
 
-    .btn:active {
-      transform: translateY(0);
-    }
-
     .input-group {
       margin-bottom: 15px;
       text-align: left;
@@ -114,11 +109,6 @@
       color: #64748b;
     }
 
-    input:focus, select:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-    }
-
     .result-val {
       font-size: 38px;
       font-weight: 800;
@@ -132,14 +122,13 @@
   <div class="card">
     <div class="badge">Tk studio</div>
 
-    <!-- 1-р алхам: Эхлэл -->
-    <div id="step-start" style="display: block;">
-      <h2>Хэр өндөр болохыг чинь үзээд өгье хөөрхнөө! 🧸
-✨</h2>
-      <button class="btn" onclick="nextStep('step-start', 'step-form')">▶ Эхлэх (Play)</button>
+    <!-- 1-р алхам -->
+    <div id="step-start">
+      <h2>Хэр өндөр болохыг чинь үзээд өгье хөөрхнөө! 🤍✨</h2>
+      <button class="btn" onclick="showStep('step-form')">▶ Эхлэх (Play)</button>
     </div>
 
-    <!-- 2-р алхам: Мэдээлэл авах -->
+    <!-- 2-р алхам -->
     <div id="step-form" style="display: none;">
       <h2>Мэдээллээ оруулна уу 📝</h2>
       
@@ -164,20 +153,23 @@
       <button class="btn" onclick="calculateHeight()">Үзэх 🚀</button>
     </div>
 
-    <!-- 3-р алхам: Үр дүн -->
+    <!-- 3-р алхам -->
     <div id="step-result" style="display: none;">
       <h2>Ирээдүйд болох өндөр:</h2>
       <div class="result-val" id="height-result">175 см</div>
       <p style="color: #94a3b8; font-size: 14px;">(Эрүүл зөв хооллолт, дасгал хөдөлгөөнөө сайн хийгээрэй! 💪)</p>
       <br>
-      <button class="btn" onclick="nextStep('step-result', 'step-start')">Дахин үзэх 🔄</button>
+      <button class="btn" onclick="showStep('step-start')">Дахин үзэх 🔄</button>
     </div>
   </div>
 
   <script>
-    function nextStep(currentId, nextId) {
-      document.getElementById(currentId).style.display = 'none';
-      document.getElementById(nextId).style.display = 'block';
+    function showStep(stepId) {
+      document.getElementById('step-start').style.display = 'none';
+      document.getElementById('step-form').style.display = 'none';
+      document.getElementById('step-result').style.display = 'none';
+      
+      document.getElementById(stepId).style.display = 'block';
     }
 
     function calculateHeight() {
@@ -191,7 +183,11 @@
       }
 
       var predictedHeight = 0;
-
       if (gender === 'boy') {
         predictedHeight = (father + mother + 13) / 2;
       } else {
+        predictedHeight = (father + mother - 13) / 2;
+      }
+
+      document.getElementById('height-result').innerText = Math.round(predictedHeight) + " см";
+      showStep('step-result')
