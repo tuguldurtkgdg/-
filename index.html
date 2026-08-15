@@ -189,11 +189,11 @@
       <h2>Мэдээллээ оруулна уу 📝</h2>
       
       <div class="input-group">
-        <label for="gender">Хүйс:</label>
-        <select id="gender">
-          <option value="boy">Хүү</option>
-          <option value="girl">Охин</option>
-        </select>
+        <label>Хүйс:</label>
+        <div class="choice-row">
+          <button type="button" class="choice-btn" onclick="choose(this,'gender')">Хүү</button>
+          <button type="button" class="choice-btn" onclick="choose(this,'gender')">Охин</button>
+        </div>
       </div>
 
       <div class="input-group">
@@ -301,7 +301,8 @@
       };
 
       document.getElementById('calc-btn').onclick = function() {
-        var gender = document.getElementById('gender').value;
+        var genderBtn = document.querySelector('#step-form .choice-row[data-group="gender"] .selected');
+        var gender = genderBtn ? (genderBtn.textContent === 'Хүү' ? 'boy' : 'girl') : 'boy';
         var father = parseFloat(document.getElementById('father').value);
         var mother = parseFloat(document.getElementById('mother').value);
 
