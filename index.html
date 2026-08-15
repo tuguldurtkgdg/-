@@ -24,41 +24,43 @@
       min-height: 100vh;
     }
 
+    /* 3-р сонголт: Зөөлөн ягаан уусалттай карт */
     .card {
-      background: rgba(15, 23, 42, 0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(243, 232, 255, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
       border-radius: 20px;
       padding: 35px 25px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 12px 32px rgba(124, 58, 237, 0.15);
       max-width: 420px;
       width: 100%;
       text-align: center;
-      color: #ffffff;
+      color: #3b0764;
     }
 
     .badge {
       display: inline-block;
-      background-color: rgba(255, 255, 255, 0.15);
-      color: #e2e8f0;
+      background-color: rgba(168, 85, 247, 0.2);
+      color: #6b21a8;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       padding: 4px 12px;
       border-radius: 12px;
       margin-bottom: 15px;
     }
 
     h2 {
-      color: #ffffff;
+      color: #4c1d95;
       margin-top: 0;
       margin-bottom: 20px;
       font-size: 20px;
       line-height: 1.4;
+      font-weight: 700;
     }
 
     .btn {
-      background-color: #3b82f6;
+      background-color: #8b5cf6;
       color: white;
       border: none;
       padding: 14px 28px;
@@ -68,12 +70,16 @@
       cursor: pointer;
       width: 100%;
       transition: all 0.2s;
-      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
     }
 
     .btn:hover {
-      background-color: #2563eb;
+      background-color: #7c3aed;
       transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
     }
 
     .input-group {
@@ -84,35 +90,35 @@
     label {
       display: block;
       font-size: 14px;
-      color: #94a3b8;
+      color: #581c87;
       margin-bottom: 5px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     input, select {
       width: 100%;
       padding: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
+      border: 1px solid #d8b4fe;
+      background: #ffffff;
+      color: #3b0764;
       border-radius: 10px;
       font-size: 15px;
       outline: none;
     }
 
-    select option {
-      background: #1e293b;
-      color: #ffffff;
+    input::placeholder {
+      color: #a855f7;
     }
 
-    input::placeholder {
-      color: #64748b;
+    input:focus, select:focus {
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
     }
 
     .result-val {
       font-size: 38px;
       font-weight: 800;
-      color: #60a5fa;
+      color: #6d28d9;
       margin: 15px 0;
     }
   </style>
@@ -123,9 +129,9 @@
     <div class="badge">Tk studio</div>
 
     <!-- 1-р алхам -->
-    <div id="step-start">
+    <div id="step-start" style="display: block;">
       <h2>Хэр өндөр болохыг чинь үзээд өгье хөөрхнөө! 🤍✨</h2>
-      <button class="btn" onclick="showStep('step-form')">▶ Эхлэх (Play)</button>
+      <button class="btn" id="start-btn">▶ Эхлэх (Play)</button>
     </div>
 
     <!-- 2-р алхам -->
@@ -150,44 +156,38 @@
         <input type="number" id="mother" placeholder="жишээ нь: 162">
       </div>
 
-      <button class="btn" onclick="calculateHeight()">Үзэх 🚀</button>
+      <button class="btn" id="calc-btn">Үзэх 🚀</button>
     </div>
 
     <!-- 3-р алхам -->
     <div id="step-result" style="display: none;">
       <h2>Ирээдүйд болох өндөр:</h2>
       <div class="result-val" id="height-result">175 см</div>
-      <p style="color: #94a3b8; font-size: 14px;">(Эрүүл зөв хооллолт, дасгал хөдөлгөөнөө сайн хийгээрэй! 💪)</p>
+      <p style="color: #6b21a8; font-size: 14px; font-weight: 600;">(Эрүүл зөв хооллолт, дасгал хөдөлгөөнөө сайн хийгээрэй! 💪)</p>
       <br>
-      <button class="btn" onclick="showStep('step-start')">Дахин үзэх 🔄</button>
+      <button class="btn" id="reset-btn">Дахин үзэх 🔄</button>
     </div>
   </div>
 
   <script>
-    function showStep(stepId) {
-      document.getElementById('step-start').style.display = 'none';
-      document.getElementById('step-form').style.display = 'none';
-      document.getElementById('step-result').style.display = 'none';
-      
-      document.getElementById(stepId).style.display = 'block';
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+      var stepStart = document.getElementById('step-start');
+      var stepForm = document.getElementById('step-form');
+      var stepResult = document.getElementById('step-result');
 
-    function calculateHeight() {
-      var gender = document.getElementById('gender').value;
-      var father = parseFloat(document.getElementById('father').value);
-      var mother = parseFloat(document.getElementById('mother').value);
+      document.getElementById('start-btn').onclick = function() {
+        stepStart.style.display = 'none';
+        stepForm.style.display = 'block';
+      };
 
-      if (!father || !mother) {
-        alert("Аав, ээжийн өндрийг бүрэн оруулна уу!");
-        return;
-      }
+      document.getElementById('calc-btn').onclick = function() {
+        var gender = document.getElementById('gender').value;
+        var father = parseFloat(document.getElementById('father').value);
+        var mother = parseFloat(document.getElementById('mother').value);
 
-      var predictedHeight = 0;
-      if (gender === 'boy') {
-        predictedHeight = (father + mother + 13) / 2;
-      } else {
-        predictedHeight = (father + mother - 13) / 2;
-      }
+        if (!father || !mother) {
+          alert("Аав, ээжийн өндрийг бүрэн оруулна уу!");
+          return;
+        }
 
-      document.getElementById('height-result').innerText = Math.round(predictedHeight) + " см";
-      showStep('step-result')
+        var predictedHeight = (gend
