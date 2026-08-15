@@ -197,71 +197,48 @@
     document.addEventListener("DOMContentLoaded", function() {
       var stepStart = document.getElementById('step-start');
       var stepForm = document.getElementById('step-form');
+      var stepResult = document.getElementById('step-result');
 
-var stepResult = document.getElementById('step-result');
+      document.getElementById('start-btn').onclick = function() {
+        stepStart.style.display = 'none';
+        stepForm.style.display = 'block';
+      };
 
- 
+      document.getElementById('calc-btn').onclick = function() {
+        var gender = document.getElementById('gender').value;
+        var father = parseFloat(document.getElementById('father').value);
+        var mother = parseFloat(document.getElementById('mother').value);
 
-document.getElementById('start-btn').onclick = function() {
+        if (!father || !mother) {
+          alert("Аав, ээжийн өндрийг бүрэн оруулна уу!");
+          return;
+        }
 
-stepStart.style.display = 'none';
+        var predictedHeight;
+        if (gender === 'boy') {
+          predictedHeight = (father + mother) / 2 + 6.5;
+        } else {
+          predictedHeight = (father + mother) / 2 - 6.5;
+        }
+        predictedHeight = Math.round(predictedHeight * 10) / 10;
 
-stepForm.style.display = 'block';
+        var low = Math.round((predictedHeight - 8.5) * 10) / 10;
+        var high = Math.round((predictedHeight + 8.5) * 10) / 10;
 
-};
+        document.getElementById('height-result').textContent = predictedHeight + ' см';
+        document.getElementById('height-range').textContent = 'Боломжит хүрээ: ' + low + '–' + high + ' см';
 
- 
+        stepForm.style.display = 'none';
+        stepResult.style.display = 'block';
+      };
 
-document.getElementById('calc-btn').onclick = function() {
-
-var gender = document.getElementById('gender').value;
-
-var father = parseFloat(document.getElementById('father').value);
-
-var mother = parseFloat(document.getElementById('mother').value);
-
- 
-
-if (!father || !mother) {
-
-alert("Аав, ээжийн өндрийг бүрэн оруулна уу!");
-
-return;
-
-}
-
- 
-
-var predictedHeight;
-
-if (gender === 'boy') {
-
-predictedHeight = (father + mother) / 2 + 6.5;
-
-} else {
-
-predictedHeight = (father + mother) / 2 - 6.5;
-
-}
-
-predictedHeight = Math.round(predictedHeight * 10) / 10;
-
- 
-
-var low = Math.round((predictedHeight - 8.5) * 10) / 10;
-
-var high = Math.round((predictedHeight + 8.5) * 10) / 10;
-
- 
-
-document.getElementById('height-result').textContent = predictedHeight + ' см';
-
-document.getElementById('height-range').textContent = 'Боломжит хүрээ: ' + low + '–' + high + ' см';
-
- 
-
-stepForm.style.display = 'none';
-
-stepResult.style.display = 'block';
-
-};
+      document.getElementById('reset-btn').onclick = function() {
+        document.getElementById('father').value = '';
+        document.getElementById('mother').value = '';
+        stepResult.style.display = 'none';
+        stepStart.style.display = 'block';
+      };
+    });
+  </script>
+</body>
+</html>
