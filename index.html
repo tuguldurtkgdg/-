@@ -6,7 +6,6 @@
   <title>Хүүхдийн өндөр таамаглагч - Tk studio</title>
   <style>
     * { box-sizing: border-box; }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-image: url('background.png');
@@ -14,196 +13,138 @@
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: 0; padding: 20px;
+      display: flex; justify-content: center; align-items: flex-start;
       min-height: 100vh;
     }
-
     .card-wrap {
-      padding: 3px;
-      border-radius: 26px;
+      padding: 3px; border-radius: 26px;
       background: linear-gradient(135deg, #ff9a56, #ffd166, #6bcb77, #4fb0e0, #8b5cf6, #ec4899);
       background-size: 300% 300%;
       animation: borderShift 8s ease infinite;
-      box-shadow: 0 20px 45px rgba(60, 20, 90, 0.35);
-      max-width: 420px;
-      width: 100%;
+      box-shadow: 0 20px 45px rgba(60,20,90,0.35);
+      max-width: 440px; width: 100%;
     }
-
     @keyframes borderShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}
     }
-
     .card {
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255,255,255,0.9);
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       border-radius: 23px;
-      padding: 30px 22px;
-      text-align: center;
-      color: #3b0764;
+      padding: 28px 20px;
+      text-align: center; color: #3b0764;
     }
-
     .badge {
       display: inline-block;
-      background: linear-gradient(90deg, #8b5cf6, #ec4899);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 5px 14px;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      box-shadow: 0 3px 10px rgba(139,92,246,0.4);
+      background: linear-gradient(90deg,#8b5cf6,#ec4899);
+      color:#fff; font-size:12px; font-weight:700;
+      padding:5px 14px; border-radius:12px; margin-bottom:15px;
+      box-shadow:0 3px 10px rgba(139,92,246,0.4);
     }
-
-    h2 {
-      color: #4c1d95;
-      margin-top: 0;
-      margin-bottom: 20px;
-      font-size: 20px;
-      line-height: 1.4;
-      font-weight: 700;
-    }
-
+    h2 { color:#4c1d95; margin-top:0; margin-bottom:18px; font-size:19px; line-height:1.4; font-weight:700; }
     .btn {
-      background-color: #8b5cf6;
-      color: white;
-      border: none;
-      padding: 14px 28px;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 12px;
-      cursor: pointer;
-      width: 100%;
-      transition: all 0.2s;
-      box-shadow: 0 4px 14px rgba(139,92,246,0.35);
-      margin-top: 8px;
+      background-color:#8b5cf6; color:white; border:none;
+      padding:13px 28px; font-size:15px; font-weight:bold;
+      border-radius:12px; cursor:pointer; width:100%;
+      transition:all 0.2s; box-shadow:0 4px 14px rgba(139,92,246,0.35); margin-top:8px;
     }
-
-    .btn:hover { background-color: #7c3aed; transform: translateY(-2px); }
-    .btn:active { transform: translateY(0); }
-
-    .input-group {
-      margin-bottom: 14px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      font-size: 13.5px;
-      color: #581c87;
-      margin-bottom: 6px;
-      font-weight: 700;
-    }
-
+    .btn:hover { background-color:#7c3aed; transform:translateY(-2px); }
+    .btn:active { transform:translateY(0); }
+    .input-group { margin-bottom:13px; text-align:left; }
+    label { display:block; font-size:13px; color:#581c87; margin-bottom:5px; font-weight:700; }
     input {
-      width: 100%;
-      padding: 11px 12px;
-      border: 1.5px solid #d8b4fe;
-      background: #fff;
-      color: #3b0764;
-      border-radius: 10px;
-      font-size: 15px;
-      outline: none;
+      width:100%; padding:10px 12px;
+      border:1.5px solid #d8b4fe; background:#fff; color:#3b0764;
+      border-radius:10px; font-size:15px; outline:none;
     }
-
-    input::placeholder { color: #c084fc; }
-    input:focus { border-color: #8b5cf6; box-shadow: 0 0 0 3px rgba(139,92,246,0.18); }
-
-    .choice-row { display: flex; gap: 7px; }
-
+    input::placeholder { color:#c084fc; }
+    input:focus { border-color:#8b5cf6; box-shadow:0 0 0 3px rgba(139,92,246,0.18); }
+    .choice-row { display:flex; gap:7px; }
     .choice-btn {
-      flex: 1;
-      padding: 10px 4px;
-      border: 2px solid #d8b4fe;
-      border-radius: 10px;
-      background: #fff;
-      color: #6b21a8;
-      font-size: 12.5px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.18s;
-      text-align: center;
+      flex:1; padding:9px 4px;
+      border:2px solid #d8b4fe; border-radius:10px;
+      background:#fff; color:#6b21a8; font-size:12px; font-weight:600;
+      cursor:pointer; transition:all 0.18s; text-align:center;
     }
+    .choice-btn:hover { border-color:#8b5cf6; background:#f3e8ff; }
+    .choice-btn.selected { background:#8b5cf6; color:#fff; border-color:#8b5cf6; box-shadow:0 3px 10px rgba(139,92,246,0.35); }
 
-    .choice-btn:hover { border-color: #8b5cf6; background: #f3e8ff; }
-    .choice-btn.selected {
-      background: #8b5cf6;
-      color: #fff;
-      border-color: #8b5cf6;
-      box-shadow: 0 3px 10px rgba(139,92,246,0.35);
-    }
-
-    /* Бөөрөнхий диаграмм */
+    /* Бөөрөнхий */
     .circle-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 14px;
+      position:relative; width:190px; height:190px;
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 12px;
     }
-
-    .circle-svg { transform: rotate(-90deg); }
-
-    .circle-bg { fill: none; stroke: #ede0fa; stroke-width: 14; }
-
+    .circle-svg { transform:rotate(-90deg); }
+    .circle-bg { fill:none; stroke:#ede0fa; stroke-width:14; }
     .circle-progress {
-      fill: none;
-      stroke: url(#redGrad);
-      stroke-width: 14;
-      stroke-linecap: round;
-      stroke-dasharray: 565;
-      stroke-dashoffset: 565;
-      transition: stroke-dashoffset 1.8s cubic-bezier(.4,0,.2,1);
+      fill:none; stroke:url(#redGrad); stroke-width:14;
+      stroke-linecap:round; stroke-dasharray:534; stroke-dashoffset:534;
+      transition:stroke-dashoffset 1.8s cubic-bezier(.4,0,.2,1);
     }
+    .circle-inner { position:absolute; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+    .circle-label { font-size:12px; color:#7c3aed; font-weight:600; text-align:center; line-height:1.3; }
+    .circle-value { font-size:42px; font-weight:800; color:#cc0000; line-height:1; margin:3px 0 2px; }
+    .circle-unit { font-size:15px; color:#7c3aed; font-weight:600; }
+    .result-range { font-size:13px; color:#7c3aed; margin-bottom:12px; font-weight:600; }
 
-    .circle-inner {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    /* Статистик хэсэг */
+    .stat-title {
+      font-size:17px; font-weight:800; color:#4c1d95;
+      margin:18px 0 14px; display:flex; align-items:center; justify-content:center; gap:6px;
     }
+    .stat-card {
+      background:linear-gradient(135deg,#f5f0ff,#fdf2ff);
+      border:1.5px solid #e9d5ff;
+      border-radius:16px; padding:14px 16px; margin-bottom:10px; text-align:left;
+    }
+    .stat-card-title {
+      font-size:12px; font-weight:700; color:#7c3aed;
+      text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;
+      display:flex; align-items:center; gap:5px;
+    }
+    .stat-row {
+      display:flex; align-items:center; justify-content:space-between;
+      margin-bottom:8px; font-size:13px;
+    }
+    .stat-row:last-child { margin-bottom:0; }
+    .stat-label { color:#581c87; font-weight:600; }
+    .stat-val { font-weight:700; color:#4c1d95; }
 
-    .circle-label {
-      font-size: 13px;
-      color: #7c3aed;
-      font-weight: 600;
-      text-align: center;
-      line-height: 1.3;
-    }
+    /* Bar */
+    .bar-wrap { flex:1; margin:0 10px; height:8px; background:#e9d5ff; border-radius:4px; overflow:hidden; }
+    .bar-fill { height:100%; border-radius:4px; transition:width 1.2s ease; }
 
-    .circle-value {
-      font-size: 46px;
-      font-weight: 800;
-      color: #cc0000;
-      line-height: 1;
-      margin: 4px 0 2px;
+    /* Emoji score */
+    .score-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+    .score-item {
+      background:linear-gradient(135deg,#f5f0ff,#fdf2ff);
+      border:1.5px solid #e9d5ff;
+      border-radius:14px; padding:12px 10px; text-align:center;
     }
+    .score-emoji { font-size:26px; }
+    .score-name { font-size:11px; color:#7c3aed; font-weight:700; margin:4px 0 2px; }
+    .score-stars { font-size:13px; }
 
-    .circle-unit {
-      font-size: 16px;
-      color: #7c3aed;
-      font-weight: 600;
+    /* Зөвлөмж */
+    .advice-item {
+      display:flex; align-items:flex-start; gap:8px;
+      background:linear-gradient(135deg,#f0fdf4,#dcfce7);
+      border:1.5px solid #bbf7d0; border-radius:12px;
+      padding:10px 12px; margin-bottom:8px; text-align:left;
+      font-size:13px; color:#166534; font-weight:600; line-height:1.4;
     }
+    .advice-item.warn {
+      background:linear-gradient(135deg,#fffbeb,#fef3c7);
+      border-color:#fde68a; color:#92400e;
+    }
+    .advice-emoji { font-size:18px; flex-shrink:0; }
 
-    .result-range {
-      font-size: 13px;
-      color: #7c3aed;
-      margin-bottom: 14px;
-      font-weight: 600;
-    }
+    .divider { height:1px; background:linear-gradient(90deg,transparent,#d8b4fe,transparent); margin:14px 0; }
   </style>
 </head>
 <body>
-
 <div class="card-wrap">
 <div class="card">
   <div class="badge">Tk studio</div>
@@ -217,102 +158,89 @@
   <!-- 2-р алхам -->
   <div id="step-form" style="display:none;">
     <h2>Мэдээллээ оруулна уу 📝</h2>
-
     <div class="input-group">
       <label>Хүйс:</label>
-      <div class="choice-row" id="row-gender">
+      <div class="choice-row">
         <button type="button" class="choice-btn" onclick="choose(this,'gender')">Хүү</button>
         <button type="button" class="choice-btn" onclick="choose(this,'gender')">Охин</button>
       </div>
     </div>
-
     <div class="input-group">
       <label for="father">Аавын өндөр (см):</label>
       <input type="number" id="father" placeholder="жишээ нь: 175">
     </div>
-
     <div class="input-group">
       <label for="mother">Ээжийн өндөр (см):</label>
       <input type="number" id="mother" placeholder="жишээ нь: 162">
     </div>
-
     <div class="input-group">
       <label for="growth">Сүүлийн жилд хэдэн см өссөн бэ?</label>
       <input type="number" id="growth" placeholder="жишээ нь: 7">
     </div>
-
     <div class="input-group">
       <label for="acne">Сүүлийн жилд хэр их батга гарсан бэ? (1–10)</label>
       <input type="number" id="acne" placeholder="жишээ нь: 5" min="1" max="10">
     </div>
-
     <div class="input-group">
       <label for="weight">Сүүлийн жилд хэдэн кг таргалсан бэ?</label>
       <input type="number" id="weight" placeholder="жишээ нь: 3">
     </div>
-
     <div class="input-group">
       <label>Сүүлийн жилд хөлийн хэмжээ хэр томорсон бэ?</label>
-      <div class="choice-row" id="row-foot">
+      <div class="choice-row">
         <button type="button" class="choice-btn" onclick="choose(this,'foot')">Бага</button>
         <button type="button" class="choice-btn" onclick="choose(this,'foot')">Бага зэрэг</button>
         <button type="button" class="choice-btn" onclick="choose(this,'foot')">Их</button>
       </div>
     </div>
-
     <div class="input-group">
       <label>Сүүлийн жилд булчингийн масс хэр их нэмсэн бэ?</label>
-      <div class="choice-row" id="row-muscle">
+      <div class="choice-row">
         <button type="button" class="choice-btn" onclick="choose(this,'muscle')">Бага</button>
         <button type="button" class="choice-btn" onclick="choose(this,'muscle')">Бага зэрэг</button>
         <button type="button" class="choice-btn" onclick="choose(this,'muscle')">Их</button>
       </div>
     </div>
-
     <div class="input-group">
       <label>Сүүлийн жилд үс ургалт хэр байсан бэ?</label>
-      <div class="choice-row" id="row-hair">
+      <div class="choice-row">
         <button type="button" class="choice-btn" onclick="choose(this,'hair')">Бага</button>
         <button type="button" class="choice-btn" onclick="choose(this,'hair')">Бага зэрэг</button>
         <button type="button" class="choice-btn" onclick="choose(this,'hair')">Их</button>
       </div>
     </div>
-
     <div class="input-group">
       <label>Орой хэд гээд унтдаг вэ?</label>
-      <div class="choice-row" id="row-sleep">
+      <div class="choice-row">
         <button type="button" class="choice-btn" onclick="choose(this,'sleep')">8–10</button>
         <button type="button" class="choice-btn" onclick="choose(this,'sleep')">10–12</button>
         <button type="button" class="choice-btn" onclick="choose(this,'sleep')">+12</button>
       </div>
     </div>
-
     <div class="input-group">
       <label>Өглөө хэд гээд сэрдэг вэ?</label>
-      <div class="choice-row" id="row-wake">
+      <div class="choice-row">
         <button type="button" class="choice-btn" onclick="choose(this,'wake')">4–6</button>
         <button type="button" class="choice-btn" onclick="choose(this,'wake')">6–8</button>
         <button type="button" class="choice-btn" onclick="choose(this,'wake')">+8</button>
       </div>
     </div>
-
     <button class="btn" id="calc-btn">Үзэх 🚀</button>
   </div>
 
-  <!-- 3-р алхам -->
+  <!-- 3-р алхам: үр дүн -->
   <div id="step-result" style="display:none;">
     <h2>Ирээдүйд болох өндөр:</h2>
-
     <div class="circle-container">
-      <svg class="circle-svg" width="200" height="200" viewBox="0 0 200 200">
+      <svg class="circle-svg" width="190" height="190" viewBox="0 0 190 190">
         <defs>
           <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#cc0000;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#ff4444;stop-opacity:1" />
+            <stop offset="0%" style="stop-color:#cc0000"/>
+            <stop offset="100%" style="stop-color:#ff4444"/>
           </linearGradient>
         </defs>
-        <circle class="circle-bg" cx="100" cy="100" r="90"/>
-        <circle class="circle-progress" id="circle-prog" cx="100" cy="100" r="90"/>
+        <circle class="circle-bg" cx="95" cy="95" r="85"/>
+        <circle class="circle-progress" id="circle-prog" cx="95" cy="95" r="85"/>
       </svg>
       <div class="circle-inner">
         <div class="circle-label">Боломжит<br>өндөр</div>
@@ -320,9 +248,110 @@
         <div class="circle-unit">см</div>
       </div>
     </div>
-
     <div class="result-range" id="height-range"></div>
-    <button class="btn" id="reset-btn">Дэлгэрэнгүй статистик 💯👍🏻</button>
+    <button class="btn" id="stat-btn">Дэлгэрэнгүй статистик 💯👍🏻</button>
+    <button class="btn" id="reset-btn" style="display:none;">Дахин эхлэх 🔄</button>
+  </div>
+
+  <!-- 4-р алхам: статистик -->
+  <div id="step-stat" style="display:none;">
+    <h2>Таны дэлгэрэнгүй статистик 📊</h2>
+
+    <!-- Өсөлтийн мэдээлэл -->
+    <div class="stat-card">
+      <div class="stat-card-title">📏 Өсөлтийн мэдээлэл</div>
+      <div class="stat-row">
+        <span class="stat-label">Таамаглал өндөр</span>
+        <span class="stat-val" id="s-height">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Боломжит хүрээ</span>
+        <span class="stat-val" id="s-range">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Сүүлийн жилд өссөн</span>
+        <span class="stat-val" id="s-growth">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Жин нэмсэн</span>
+        <span class="stat-val" id="s-weight">—</span>
+      </div>
+    </div>
+
+    <!-- Хөгжлийн үзүүлэлт -->
+    <div class="stat-card">
+      <div class="stat-card-title">🌱 Хөгжлийн үзүүлэлт</div>
+      <div class="stat-row">
+        <span class="stat-label">🦶 Хөл</span>
+        <div class="bar-wrap"><div class="bar-fill" id="bar-foot" style="background:linear-gradient(90deg,#8b5cf6,#ec4899)"></div></div>
+        <span class="stat-val" id="lbl-foot">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">💪 Булчин</span>
+        <div class="bar-wrap"><div class="bar-fill" id="bar-muscle" style="background:linear-gradient(90deg,#8b5cf6,#ec4899)"></div></div>
+        <span class="stat-val" id="lbl-muscle">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">💇 Үс</span>
+        <div class="bar-wrap"><div class="bar-fill" id="bar-hair" style="background:linear-gradient(90deg,#8b5cf6,#ec4899)"></div></div>
+        <span class="stat-val" id="lbl-hair">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">😤 Батга</span>
+        <div class="bar-wrap"><div class="bar-fill" id="bar-acne" style="background:linear-gradient(90deg,#f59e0b,#ef4444)"></div></div>
+        <span class="stat-val" id="lbl-acne">—</span>
+      </div>
+    </div>
+
+    <!-- Нойрны хэв маяг -->
+    <div class="stat-card">
+      <div class="stat-card-title">😴 Нойрны хэв маяг</div>
+      <div class="stat-row">
+        <span class="stat-label">Унтах цаг</span>
+        <span class="stat-val" id="s-sleep">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Сэрэх цаг</span>
+        <span class="stat-val" id="s-wake">—</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Нойрны үнэлгээ</span>
+        <span class="stat-val" id="s-sleep-score">—</span>
+      </div>
+    </div>
+
+    <!-- Ерөнхий оноо -->
+    <div class="divider"></div>
+    <div class="stat-title">⭐ Ерөнхий үнэлгээ</div>
+    <div class="score-grid">
+      <div class="score-item">
+        <div class="score-emoji">📏</div>
+        <div class="score-name">Өсөлт</div>
+        <div class="score-stars" id="sc-growth">—</div>
+      </div>
+      <div class="score-item">
+        <div class="score-emoji">😴</div>
+        <div class="score-name">Нойр</div>
+        <div class="score-stars" id="sc-sleep">—</div>
+      </div>
+      <div class="score-item">
+        <div class="score-emoji">💪</div>
+        <div class="score-name">Бие хөгжил</div>
+        <div class="score-stars" id="sc-body">—</div>
+      </div>
+      <div class="score-item">
+        <div class="score-emoji">🏅</div>
+        <div class="score-name">Нийт</div>
+        <div class="score-stars" id="sc-total">—</div>
+      </div>
+    </div>
+
+    <!-- Зөвлөмж -->
+    <div class="divider"></div>
+    <div class="stat-title">💡 Зөвлөмж</div>
+    <div id="advice-box"></div>
+
+    <button class="btn" id="reset-btn2" style="margin-top:6px;">Баярлалаа 🥰</button>
   </div>
 
 </div>
@@ -330,6 +359,7 @@
 
 <script>
   var selectedGroups = {};
+  var userData = {};
 
   function choose(btn, group) {
     var siblings = btn.parentElement.querySelectorAll('.choice-btn');
@@ -338,10 +368,29 @@
     selectedGroups[group] = btn.textContent.trim();
   }
 
+  function stars(n, max) {
+    var s = '';
+    for (var i = 0; i < max; i++) s += i < n ? '⭐' : '☆';
+    return s;
+  }
+
+  function levelScore(val) {
+    if (val === 'Бага') return 1;
+    if (val === 'Бага зэрэг') return 2;
+    return 3;
+  }
+
+  function barWidth(val) {
+    if (val === 'Бага') return '30%';
+    if (val === 'Бага зэрэг') return '60%';
+    return '95%';
+  }
+
   document.addEventListener("DOMContentLoaded", function() {
     var stepStart  = document.getElementById('step-start');
     var stepForm   = document.getElementById('step-form');
     var stepResult = document.getElementById('step-result');
+    var stepStat   = document.getElementById('step-stat');
 
     document.getElementById('start-btn').onclick = function() {
       stepStart.style.display = 'none';
@@ -354,57 +403,123 @@
       var growth = parseFloat(document.getElementById('growth').value);
       var acne   = parseFloat(document.getElementById('acne').value);
       var weight = parseFloat(document.getElementById('weight').value);
-
-      var requiredGroups = ['gender','foot','muscle','hair','sleep','wake'];
+      var req    = ['gender','foot','muscle','hair','sleep','wake'];
 
       if (!father || !mother) { alert("Аав, ээжийн өндрийг оруулна уу!"); return; }
       if (!growth)            { alert("Сүүлийн жилд хэдэн см өссөнөө оруулна уу!"); return; }
       if (!acne)              { alert("Батгын мэдээллийг оруулна уу!"); return; }
       if (!weight)            { alert("Хэдэн кг таргалсанаа оруулна уу!"); return; }
-
-      for (var i = 0; i < requiredGroups.length; i++) {
-        if (!selectedGroups[requiredGroups[i]]) {
-          alert("Бүх асуултад хариулна уу!");
-          return;
-        }
+      for (var i = 0; i < req.length; i++) {
+        if (!selectedGroups[req[i]]) { alert("Бүх асуултад хариулна уу!"); return; }
       }
 
       var gender = selectedGroups['gender'] === 'Хүү' ? 'boy' : 'girl';
-      var predictedHeight = gender === 'boy'
+      var predicted = gender === 'boy'
         ? (father + mother) / 2 + 6.5
         : (father + mother) / 2 - 6.5;
-      predictedHeight = Math.round(predictedHeight * 10) / 10;
+      predicted = Math.round(predicted * 10) / 10;
 
-      var low  = Math.round((predictedHeight - 8.5) * 10) / 10;
-      var high = Math.round((predictedHeight + 8.5) * 10) / 10;
+      userData = { father, mother, growth, acne, weight, predicted,
+        gender, foot: selectedGroups['foot'], muscle: selectedGroups['muscle'],
+        hair: selectedGroups['hair'], sleep: selectedGroups['sleep'], wake: selectedGroups['wake'] };
 
-      document.getElementById('height-result').textContent = predictedHeight;
+      var low  = Math.round((predicted - 8.5) * 10) / 10;
+      var high = Math.round((predicted + 8.5) * 10) / 10;
+      userData.low = low; userData.high = high;
+
+      document.getElementById('height-result').textContent = predicted;
       document.getElementById('height-range').textContent  = 'Боломжит хүрээ: ' + low + '–' + high + ' см';
 
       stepForm.style.display   = 'none';
       stepResult.style.display = 'block';
 
       setTimeout(function() {
-        var minH = 140, maxH = 210;
-        var pct  = Math.min(1, Math.max(0, (predictedHeight - minH) / (maxH - minH)));
-        var circ = 2 * Math.PI * 90;
+        var circ = 2 * Math.PI * 85;
+        var pct  = Math.min(1, Math.max(0, (predicted - 140) / 70));
         document.getElementById('circle-prog').style.strokeDasharray  = circ;
         document.getElementById('circle-prog').style.strokeDashoffset = circ * (1 - pct);
       }, 80);
     };
 
-    document.getElementById('reset-btn').onclick = function() {
+    document.getElementById('stat-btn').onclick = function() {
+      stepResult.style.display = 'none';
+      stepStat.style.display   = 'block';
+      buildStat();
+    };
+
+    function buildStat() {
+      var d = userData;
+
+      // Өсөлтийн мэдээлэл
+      document.getElementById('s-height').textContent = d.predicted + ' см';
+      document.getElementById('s-range').textContent  = d.low + '–' + d.high + ' см';
+      document.getElementById('s-growth').textContent = d.growth + ' см 📈';
+      document.getElementById('s-weight').textContent = d.weight + ' кг ⚖️';
+
+      // Bars
+      var groups = ['foot','muscle','hair'];
+      var barIds = ['bar-foot','bar-muscle','bar-hair'];
+      var lblIds = ['lbl-foot','lbl-muscle','lbl-hair'];
+      groups.forEach(function(g, i) {
+        document.getElementById(barIds[i]).style.width = barWidth(d[g]);
+        document.getElementById(lblIds[i]).textContent = d[g];
+      });
+      var acnePct = (d.acne / 10 * 100) + '%';
+      document.getElementById('bar-acne').style.width = acnePct;
+      document.getElementById('lbl-acne').textContent = d.acne + '/10';
+
+      // Нойр
+      document.getElementById('s-sleep').textContent = d.sleep + ' цаг';
+      document.getElementById('s-wake').textContent  = d.wake + ' цаг';
+      var sleepScore = d.sleep === '8–10' ? '🌙 Маш сайн' : d.sleep === '10–12' ? '😐 Дундаж' : '⚠️ Орой';
+      document.getElementById('s-sleep-score').textContent = sleepScore;
+
+      // Оноо
+      var growthSc = d.growth >= 10 ? 5 : d.growth >= 6 ? 4 : d.growth >= 3 ? 3 : 2;
+      var sleepSc  = d.sleep === '8–10' ? 5 : d.sleep === '10–12' ? 3 : 2;
+      var bodySc   = Math.round((levelScore(d.foot) + levelScore(d.muscle) + levelScore(d.hair)) / 3 * 1.5 + 0.5);
+      var totalSc  = Math.round((growthSc + sleepSc + bodySc) / 3);
+
+      document.getElementById('sc-growth').textContent = stars(growthSc, 5);
+      document.getElementById('sc-sleep').textContent  = stars(sleepSc, 5);
+      document.getElementById('sc-body').textContent   = stars(bodySc, 5);
+      document.getElementById('sc-total').textContent  = stars(totalSc, 5);
+
+      // Зөвлөмж
+      var advices = [];
+      if (d.sleep !== '8–10') advices.push({t:'Орой 10 цагаас өмнө унтахыг хичээгээрэй — нойр нь өсөлтийн гормон ялгаруулна!', warn:true, e:'🌙'});
+      else advices.push({t:'Нойрны цагийн хэмжээ маш сайн байна, үргэлжлүүл!', warn:false, e:'✅'});
+      if (d.growth < 5) advices.push({t:'Өсөлт бага байна. Кальци, D витамин хэрэглэлтээ нэмэгдүүл.', warn:true, e:'🥛'});
+      else advices.push({t:'Өсөлтийн хурд сайн байна, зөв хооллолтоо үргэлжлүүл!', warn:false, e:'📏'});
+      if (d.acne > 6) advices.push({t:'Батга их байна. Дотоод эрхтний үйл ажиллагаа, стрессийг анхаарааарай.', warn:true, e:'😤'});
+      else advices.push({t:'Арьсны байдал хэвийн байна.', warn:false, e:'😊'});
+      if (levelScore(d.muscle) >= 2) advices.push({t:'Булчингийн хөгжил сайн байна — тогтмол дасгал хийхийг үргэлжлүүл!', warn:false, e:'💪'});
+      else advices.push({t:'Тогтмол дасгал хийж булчингаа хөгжүүлэх хэрэгтэй.', warn:true, e:'🏃'});
+
+      var box = document.getElementById('advice-box');
+      box.innerHTML = '';
+      advices.forEach(function(a) {
+        var div = document.createElement('div');
+        div.className = 'advice-item' + (a.warn ? ' warn' : '');
+        div.innerHTML = '<span class="advice-emoji">' + a.e + '</span>' + a.t;
+        box.appendChild(div);
+      });
+    }
+
+    function resetAll() {
       ['father','mother','growth','acne','weight'].forEach(function(id) {
         document.getElementById(id).value = '';
       });
-      document.querySelectorAll('.choice-btn').forEach(function(b) {
-        b.classList.remove('selected');
-      });
-      selectedGroups = {};
-      document.getElementById('circle-prog').style.strokeDashoffset = 2 * Math.PI * 90;
+      document.querySelectorAll('.choice-btn').forEach(function(b) { b.classList.remove('selected'); });
+      selectedGroups = {}; userData = {};
+      document.getElementById('circle-prog').style.strokeDashoffset = 2 * Math.PI * 85;
+      stepStat.style.display   = 'none';
       stepResult.style.display = 'none';
       stepStart.style.display  = 'block';
-    };
+    }
+
+    document.getElementById('reset-btn').onclick  = resetAll;
+    document.getElementById('reset-btn2').onclick = resetAll;
   });
 </script>
 </body>
